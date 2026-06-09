@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.N. Production | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="img/logo.jpg" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ==================== HEADER ==================== */
+        .div1 {
+            background: linear-gradient(to right, #940606, #d00909, #ff2400, #fe3232, #f98d8d);
+            display: flex;
+            align-items: center;
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        #header {
+            animation: slideDown 2s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to   { transform: translateY(0);       opacity: 1; }
+        }
+
+        @keyframes slideright {
+            from { transform: translateX(100%); opacity: 0; }
+            to   { transform: translateX(0);    opacity: 1; }
+        }
+
+        #title {
+            animation: slideright 2s ease-out;
+        }
+
+        .title {
+            color: aliceblue;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+
+        /* NAV */
+        .nav1 {
+            margin-left: auto;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-toggler {
+            border: 2px solid rgba(255,255,255,0.6);
+            background: transparent;
+            padding: 6px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .navbar-toggler-icon {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            position: relative;
+        }
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            position: absolute;
+        }
+        .navbar-toggler-icon::before { top: -7px; }
+        .navbar-toggler-icon::after  { top:  7px; }
+
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+            gap: 0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, color 0.2s;
+            border-radius: 3px;
+            display: block;
+        }
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Mobile nav collapse */
+        .navbar-collapse {
+            display: flex;
+        }
+        .navbar-collapse.collapsed {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .div1 {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 10px 16px;
+            }
+            .title { font-size: 1.3rem; }
+            .nav1 { width: 100%; margin-left: 0; }
+            .navbar-toggler { display: block; margin-left: auto; }
+            .navbar-collapse {
+                display: none;
+                width: 100%;
+            }
+            .navbar-collapse.open {
+                display: flex;
+            }
+            .navbar-nav {
+                flex-direction: column;
+                width: 100%;
+                background: rgba(0,0,0,0.25);
+                border-radius: 4px;
+                margin-top: 8px;
+                padding: 8px 0;
+            }
+            .nav-link { padding: 10px 20px; }
+        }
+
+        @media (min-width: 769px) {
+            .navbar-toggler { display: none; }
+            .navbar-collapse.collapsed { display: flex !important; }
+        }
+
+        /* ==================== PROFILE ==================== */
+        .profile {
+            position: relative;
+            width: 100%;
+            margin-bottom: 45px;
+            padding: 80px 0 0 0;
+            overflow: hidden;
+            background: linear-gradient(rgba(239,35,60,.95), rgba(239,35,60,.95)), url('img/hero-bg.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .profile .container-fluid {
+            padding: 0;
+            max-width: 100%;
+        }
+
+        .profile-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+        }
+
+        .profile-col-left {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .profile-col-right {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .profile-image {
+            position: relative;
+            text-align: right;
+            padding-right: 75px;
+            margin-bottom: 50px;
+            margin-top: -50px;
+        }
+
+        .profile-image img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-left: 75px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        .profile-text p {
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: normal;
+        }
+
+        .profile-text h1 {
+            color: #ffffff;
+            font-size: 60px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            line-height: 1.0;
+        }
+
+        .profile-text h2 {
+            display: inline-block;
+            margin: 0;
+            height: 35px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        .profile-logo {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            margin-top: -100px;
+            margin-bottom: 10px;
+            align-self: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-btn {
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .profile-btn .btn {
+            margin-top: 15px;
+            color: #EF233C;
+            background: #ffffff;
+            box-shadow: inset 0 0 0 50px #ffffff;
+            border: 2px solid #ffffff;
+            padding: 12px 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .profile-btn .btn:hover {
+            color: #ffffff;
+            background: transparent;
+            box-shadow: inset 0 0 0 0 #ffffff;
+            border-color: #ffffff;
+        }
+
+        /* Typed cursor */
+        .typed-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #fff;
+            margin-left: 3px;
+            animation: blink 0.8s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Responsive profile */
+        @media (max-width: 991px) {
+            .profile { padding-top: 60px; }
+            .profile-col-left,
+            .profile-col-right { flex: 0 0 100%; max-width: 100%; }
+            .profile-content { padding: 20px 15px; align-items: center; }
+            .profile-text { text-align: center; }
+            .profile-text p  { font-size: 20px; }
+            .profile-text h1 { font-size: 45px; }
+            .profile-text h2 { font-size: 25px; height: 25px; }
+            .profile-btn { justify-content: center; }
+            .profile-image { display: none; }
+        }
+
+        @media (max-width: 767px) {
+            .profile { padding-bottom: 40px; }
+            .profile-text p  { font-size: 18px; }
+            .profile-text h1 { font-size: 35px; }
+            .profile-text h2 { font-size: 22px; height: 22px; }
+        }
+
+        @media (max-width: 575px) {
+            .profile-text p  { font-size: 16px; }
+            .profile-text h1 { font-size: 30px; }
+            .profile-text h2 { font-size: 18px; height: 18px; }
+            .profile-btn .btn { padding: 8px 16px; font-size: 0.8rem; }
+        }
+
+        /* ==================== SECTION HEADER ==================== */
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+        }
+
+        /* ==================== EDUCATION ==================== */
+        .education {
+            position: relative;
+            width: 100%;
+            padding: 45px 0 15px 0;
+        }
+
+        .education .education-item {
+            position: relative;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: inset 0 0 0 0 transparent;
+            transition: ease-out 0.5s;
+        }
+
+        .education .education-item:hover {
+            box-shadow: inset 800px 0 0 0 #EF233C;
+            margin-left: 200px;
+        }
+
+        .education .education-item:hover .education-text h3,
+        .education .education-item:hover .education-text p {
+            color: #ffffff;
+        }
+
+        .education .sabara-icon {
+            position: relative;
+            width: 150px;
+            min-width: 150px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #EF233C;
+            background: #ffffff;
+            margin-left: 20px;
+        }
+
+        .education .sabara-icon img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+
+        .education .education-text {
+            position: relative;
+            width: calc(100% - 150px);
+            padding: 0 30px;
+        }
+
+        .education .education-text h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            transition: color 0.5s;
+        }
+
+        .education .education-text p {
+            margin: 0;
+            font-size: 16px;
+            transition: color 0.5s;
+        }
+
+        @media (max-width: 767px) {
+            .education .education-item:hover { margin-left: 0; }
+            .education .sabara-icon { width: 90px; min-width: 90px; min-height: 90px; margin-left: 10px; }
+            .education .education-text { padding: 0 16px; }
+            .education .education-text h3 { font-size: 16px; }
+            .education .education-text p  { font-size: 14px; font-style: italic; }
+        }
+
+        /* ==================== EXPERIENCE / SKILLS ==================== */
+        .experience {
+            position: relative;
+            width: 100%;
+            margin: -10px 0 40px 0;
+            background-color: #EF233C;
+        }
+
+        .experience-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .experience-col-img,
+        .experience-col-content {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0;
+        }
+
+        .experience .section-header {
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .experience .experience-img {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .experience .experience-img img {
+            position: relative;
+            width: 80%;
+            height: 100%;
+            object-fit: cover;
+            margin-left: 60px;
+        }
+
+        .experience .experience-content {
+            padding: 40px 60px;
+        }
+
+        .experience .section-header h2 {
+            color: white;
+        }
+
+        .experience .experience-text p {
+            font-size: 16px;
+            color: white;
+        }
+
+        .experience .skills {
+            margin-bottom: 30px;
+        }
+
+        .experience .skill-name {
+            margin-top: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .experience .skill-name p {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: 400;
+            color: white;
+        }
+
+        /* Progress bars */
+        .experience .progress {
+            width: 100%;
+            height: 15px;
+            background: #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 8px 0 15px 0;
+        }
+
+        .experience .progress [class^="progress-bar"] {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #4ade80, #86efac);
+            border-radius: 20px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience .progress-bar1 { --target: 90%; }
+        .experience .progress-bar2 { --target: 85%; }
+        .experience .progress-bar3 { --target: 85%; }
+        .experience .progress-bar4 { --target: 80%; }
+        .experience .progress-bar5 { --target: 45%; }
+        .experience .progress-bar6 { --target: 80%; }
+        .experience .progress-bar7 { --target: 85%; }
+        .experience .progress-bar8 { --target: 65%; }
+
+        .experience .experience-text a.btn {
+            margin-top: 15px;
+            background-color: #dddddd;
+            color: #333;
+            border: none;
+            padding: 10px 24px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .experience .experience-text a.btn:hover {
+            background-color: #fff;
+        }
+
+        @media (max-width: 991px) {
+            .experience-col-img,
+            .experience-col-content {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .experience .experience-img { display: none; }
+            .experience .experience-content { padding: 40px 20px; }
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer-main {
+            background: #000;
+            color: #fff;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-grid h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #f9a825;
+            margin-bottom: 1rem;
+        }
+
+        .footer-grid p,
+        .footer-grid a {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-decoration: none;
+            line-height: 1.7;
+        }
+
+        .footer-grid a:hover { color: #fff; }
+
+        .social-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .social-btn {
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #aaa;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .social-btn:hover {
+            color: #fff;
+            border-color: #EF233C;
+            background: rgba(239,35,60,0.15);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .footer-contact-item i {
+            color: #EF233C;
+            font-size: 1rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #222;
+            padding-top: 1.25rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ==================== GENERAL ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .text-center { text-align: center; }
+
+        @keyframes fill {
+            from { width: 0; }
+            to   { width: var(--target); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="col-12 div1" id="header">
+    <div>
+        <h2 class="title" id="title">D.N. Production</h2>
+    </div>
+
+    <div class="nav1">
+        <nav class="navbar">
+            <button class="navbar-toggler" id="navToggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#footer">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- ==================== PROFILE ==================== -->
+<div class="name">
+    <div class="profile" id="home">
+        <div class="container-fluid">
+            <div class="profile-row">
+                <div class="profile-col-left">
+                    <div class="profile-content">
+                        <div class="profile-logo mb-4">
+                            <img src="img/logo.jpg" alt="Logo" onerror="this.style.display='none'">
+                        </div>
+                        <div class="profile-text">
+                            <p>I'm</p>
+                            <h1>Dulana Navodya</h1>
+                            <h2><span id="typedText"></span><span class="typed-cursor"></span></h2>
+                        </div>
+                        <div class="profile-btn">
+                            <a class="btn" href="#footer">Hire Me</a>
+                            <a class="btn" href="contact.html">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-col-right">
+                    <div class="profile-image">
+                        <img src="img/image.jpg" alt="Profile Image" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== EDUCATION ==================== -->
+<div class="education" id="education">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2>Education Qualifications</h2>
+            <br/>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="education-item">
+                    <div class="sabara-icon">
+                        <img src="img/SabaraLogo.png" alt="Sabaragamuwa University" onerror="this.parentElement.innerHTML='<i class=\'bi bi-mortarboard-fill\' style=\'font-size:3rem;color:#EF233C\'></i>'">
+                    </div>
+                    <div class="education-text">
+                        <h3>BSc (Hons) Computer Science and Technology</h3>
+                        <p>Physical Science and Technology</p>
+                        <p>Faculty of Applied Sciences</p>
+                        <p>Sabaragamuwa University of Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="education-item">
+                    <div class="sabara-icon">
+                        <img src="img/BCU.jpg" alt="Birmingham City University" onerror="this.parentElement.innerHTML='<i class=\'bi bi-building\' style=\'font-size:3rem;color:#EF233C\'></i>'">
+                    </div>
+                    <div class="education-text">
+                        <h3>BSc (Hons) Software Engineering (Top Up)</h3>
+                        <p>Faculty of Computing</p>
+                        <p>Birmingham City University</p>
+                        <p>United Kingdom</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== EXPERIENCE / SKILLS ==================== -->
+<div class="experience" id="experience">
+    <div class="experience-row">
+        <div class="experience-col-img">
+            <div class="experience-img">
+                <img src="img/Experience.png" alt="Experience" onerror="this.style.display='none'">
+            </div>
+        </div>
+        <div class="experience-col-content">
+            <div class="experience-content">
+                <div class="section-header text-left">
+                    <h2>Experience &amp; Language Skills</h2>
+                </div>
+                <div class="experience-text">
+                    <p>I have learnt many programming languages including Java, PHP, CSS, HTML, Python, C, MySQL and JavaScript.</p>
+                </div>
+                <div class="skills">
+                    <div class="skill-name"><p>Java</p><p>90%</p></div>
+                    <div class="progress"><div class="progress-bar1" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>PHP</p><p>85%</p></div>
+                    <div class="progress"><div class="progress-bar2" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>CSS</p><p>85%</p></div>
+                    <div class="progress"><div class="progress-bar3" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>HTML</p><p>85%</p></div>
+                    <div class="progress"><div class="progress-bar4" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>Python</p><p>45%</p></div>
+                    <div class="progress"><div class="progress-bar5" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>C</p><p>80%</p></div>
+                    <div class="progress"><div class="progress-bar6" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>MySQL</p><p>85%</p></div>
+                    <div class="progress"><div class="progress-bar7" role="progressbar"></div></div>
+
+                    <div class="skill-name"><p>JavaScript</p><p>65%</p></div>
+                    <div class="progress"><div class="progress-bar8" role="progressbar"></div></div>
+                </div>
+                <a class="btn" href="project.html">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer-main" id="footer">
+    <div class="footer-grid">
+        <div>
+            <h5>D.N. Production</h5>
+            <p>Here we are at D.N. Production&trade; to support you in improving your IT knowledge.</p>
+            <div class="social-row">
+                <a href="https://web.facebook.com/dulana.obapitiya" class="social-btn" target="_blank" aria-label="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="social-btn" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/dulananavodya/" class="social-btn" target="_blank" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://www.youtube.com/@dulananavodya" class="social-btn" target="_blank" aria-label="YouTube">
+                    <i class="bi bi-youtube"></i>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h5>Quick Links</h5>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="project.html">Projects</a>
+                <a href="#footer">About</a>
+            </div>
+            <br>
+            <p style="color:#555;font-size:0.78rem;">Copyright &copy; 2026 D.N. Production<br>All Rights Reserved.</p>
+        </div>
+
+        <div>
+            <h5>Contact</h5>
+            <div class="footer-contact-item">
+                <i class="bi bi-house-fill"></i>
+                <span>2A, Wewalwala Road, Bataganwila, Galle, Sri Lanka</span>
+            </div>
+            <div class="footer-contact-item">
+                <i class="bi bi-at"></i>
+                <span>dulanaobapitiya@gmail.com</span>
+            </div>
+            <div class="footer-contact-item">
+                <i class="bi bi-telephone-fill"></i>
+                <span>+94 762 046 551</span>
+            </div>
+            <div class="footer-contact-item">
+                <i class="bi bi-printer-fill"></i>
+                <span>+94 119 356 356</span>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Copyright &copy; 2026 D.N. Production &trade; — All Rights Reserved</p>
+    </div>
+</footer>
+
+<script>
+    // ── Hamburger toggle
+    const toggler = document.getElementById('navToggler');
+    const navCollapse = document.getElementById('navbarNav');
+    toggler.addEventListener('click', () => {
+        navCollapse.classList.toggle('open');
+    });
+    navCollapse.querySelectorAll('.nav-link').forEach(a => {
+        a.addEventListener('click', () => navCollapse.classList.remove('open'));
+    });
+
+    // ── Typed text effect
+    const roles = ['Undergraduate', 'Full Stack Developer', 'Web Developer', 'Front End Developer', 'Back End Developer', 'Apps Developer'];
+    let ri = 0, ci = 0, deleting = false;
+    const typedEl = document.getElementById('typedText');
+    function type() {
+        const word = roles[ri];
+        if (!deleting) {
+            typedEl.textContent = word.slice(0, ++ci);
+            if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+        } else {
+            typedEl.textContent = word.slice(0, --ci);
+            if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+        }
+        setTimeout(type, deleting ? 55 : 85);
+    }
+    type();
+
+    // ── Animate progress bars when experience section is visible
+    const progressBars = document.querySelectorAll('.experience .progress [class^="progress-bar"]');
+    const targets = [90, 85, 85, 80, 45, 80, 85, 65];
+
+    const barObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                progressBars.forEach((bar, i) => {
+                    setTimeout(() => {
+                        bar.style.width = targets[i] + '%';
+                    }, i * 100);
+                });
+                barObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const expSection = document.querySelector('.experience');
+    if (expSection) barObserver.observe(expSection);
+</script>
+</body>
+</html>
