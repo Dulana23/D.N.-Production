@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | D.N. Production | Portfolio</title>
+    <link rel="icon" href="img/logo.jpg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7b0000 0%, #b71c1c 35%, #e53935 60%, #ff5252 100%);
+        }
+        .div1 {
+            background: linear-gradient(to right, #940606, #d00909, #ff2400, #fe3232, #f98d8d);
+            display: flex;
+            align-items: center;
+            height: 100px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        #header {
+            animation: slideDown 2s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100px); opacity: 0; }
+            to   { transform: translateY(0);       opacity: 1; }
+        }
+
+        @keyframes slideright {
+            from { transform: translateX(100%); opacity: 0; }
+            to   { transform: translateX(0);    opacity: 1; }
+        }
+
+        #title {
+            animation: slideright 2s ease-out;
+        }
+
+        .title {
+            color: aliceblue;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+
+        /* NAV */
+        .nav1 {
+            margin-left: auto;
+        }
+
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar-toggler {
+            border: 2px solid rgba(255,255,255,0.6);
+            background: transparent;
+            padding: 6px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .navbar-toggler-icon {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            position: relative;
+        }
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            position: absolute;
+        }
+        .navbar-toggler-icon::before { top: -7px; }
+        .navbar-toggler-icon::after  { top:  7px; }
+
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+            gap: 0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, color 0.2s;
+            border-radius: 3px;
+            display: block;
+        }
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Mobile nav collapse */
+        .navbar-collapse {
+            display: flex;
+        }
+        .navbar-collapse.collapsed {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .div1 {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 10px 16px;
+            }
+            .title { font-size: 1.3rem; }
+            .nav1 { width: 100%; margin-left: 0; }
+            .navbar-toggler { display: block; margin-left: auto; }
+            .navbar-collapse {
+                display: none;
+                width: 100%;
+            }
+            .navbar-collapse.open {
+                display: flex;
+            }
+            .navbar-nav {
+                flex-direction: column;
+                width: 100%;
+                background: rgba(0,0,0,0.25);
+                border-radius: 4px;
+                margin-top: 8px;
+                padding: 8px 0;
+            }
+            .nav-link { padding: 10px 20px; }
+        }
+
+        @media (min-width: 769px) {
+            .navbar-toggler { display: none; }
+            .navbar-collapse.collapsed { display: flex !important; }
+        }
+        /* ── Contact section ── */
+        .contact {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* decorative blobs */
+        .contact::before,
+        .contact::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+        .contact::before {
+            width: 520px; height: 520px;
+            background: #ff1744;
+            top: -120px; left: -140px;
+        }
+        .contact::after {
+            width: 380px; height: 380px;
+            background: #fff;
+            bottom: -100px; right: -80px;
+        }
+
+        .container-fluid { width: 100%; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ── Two-column layout ── */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .col-info {
+            flex: 1 1 280px;
+            color: #fff;
+        }
+
+        .col-form {
+            flex: 1 1 340px;
+        }
+
+        /* ── Left info panel ── */
+        .info-title {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .info-sub {
+            font-size: 1rem;
+            opacity: 0.85;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .info-icon {
+            width: 42px; height: 42px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            backdrop-filter: blur(4px);
+        }
+
+        .info-text p { margin: 0; font-size: 0.82rem; opacity: 0.7; }
+        .info-text span { font-size: 0.95rem; font-weight: 500; }
+
+        /* ── Form card ── */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 20px;
+            padding: clamp(24px, 5vw, 44px);
+            box-shadow: 0 8px 48px rgba(80, 0, 0, 0.35);
+        }
+
+        .form-heading {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 26px;
+            line-height: 1.6;
+            opacity: 0.92;
+        }
+
+        /* ── Inputs ── */
+        .control-group { margin-bottom: 16px; position: relative; }
+
+        .form-control {
+            width: 100%;
+            padding: 13px 16px 13px 44px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.10);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.25s, background 0.25s;
+        }
+
+        .form-control::placeholder { color: rgba(255,255,255,0.55); }
+
+        .form-control:focus {
+            border-color: rgba(255,255,255,0.65);
+            background: rgba(255,255,255,0.17);
+        }
+
+        textarea.form-control {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+
+        .control-group.textarea-group .input-icon {
+            top: 16px;
+            transform: none;
+        }
+
+        /* ── Button ── */
+        .btn-send {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            padding: 13px 30px;
+            background: #fff;
+            color: #b71c1c;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+        }
+
+        .btn-send:hover {
+            background: #ffeaea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+        }
+
+        .btn-send:active { transform: translateY(0); }
+
+        /* ── Responsive ── */
+        @media (max-width: 767px) {
+            .contact { padding: 40px 12px; }
+            .col-info { text-align: center; }
+            .info-item { justify-content: center; }
+            .row { gap: 28px; }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form { padding: 22px 18px; }
+
+
+        }
+
+        .footer-main {
+            background: #000;
+            color: #fff;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-grid h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #f9a825;
+            margin-bottom: 1rem;
+        }
+
+        .footer-grid p,
+        .footer-grid a {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-decoration: none;
+            line-height: 1.7;
+        }
+
+        .footer-grid a:hover { color: #fff; }
+
+        .social-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .social-btn {
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #aaa;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .social-btn:hover {
+            color: #fff;
+            border-color: #EF233C;
+            background: rgba(239,35,60,0.15);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .footer-contact-item i {
+            color: #EF233C;
+            font-size: 1rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #222;
+            padding-top: 1.25rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ==================== GENERAL ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .text-center { text-align: center; }
+
+        @keyframes fill {
+            from { width: 0; }
+            to   { width: var(--target); }
+        }
+    </style>
+</head>
+<body>
+    
+  <div class="col-12 div1" id="header">
+    <div>
+        <h2 class="title" id="title">D.N. Production</h2>
+    </div>
+
+    <div class="nav1">
+        <nav class="navbar">
+            <button class="navbar-toggler" id="navToggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home.html">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home.html">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#footer">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+    <!-- Contact Start -->
+    <div class="contact" id="contact">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Left info column -->
+                    <div class="col-info">
+                        <h2 class="info-title">Get in Touch</h2>
+                        <p class="info-sub">Have a question or want to work together? Fill out the form and I'll get back to you as soon as possible.</p>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                            <div class="info-text">
+                                <p>Location</p>
+                                <span>2A, Wewalwala Road, Bataganwila</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div class="info-text">
+                                <p>Email</p>
+                                <span>dulanaobapitiya@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div class="info-text">
+                                <p>Phone</p>
+                                <span>0762046551</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right form column -->
+                    <div class="col-form">
+                        <div class="contact-form">
+                            <p class="form-heading">If you have any questions you can ask me through this section.</p>
+                            <form>
+                                <div class="control-group">
+                                    <i class="bi bi-person input-icon"></i>
+                                    <input type="text" class="form-control" placeholder="Your Name" />
+                                </div>
+                                <div class="control-group">
+                                    <i class="bi bi-envelope input-icon"></i>
+                                    <input type="email" class="form-control" placeholder="Your Email" />
+                                </div>
+                                <div class="control-group">
+                                    <i class="bi bi-chat-dots input-icon"></i>
+                                    <input type="text" class="form-control" placeholder="Subject" />
+                                </div>
+                                <div class="control-group textarea-group">
+                                    <i class="bi bi-pencil input-icon"></i>
+                                    <textarea class="form-control" placeholder="Message"></textarea>
+                                </div>
+                                <div>
+                                    <a class="btn-send" href="Home.html">
+                                        Send Message <i class="bi bi-send-fill"></i>
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- ==================== FOOTER ==================== -->
+<footer class="footer-main" id="footer">
+  <div class="footer-grid">
+      <div>
+          <h5>D.N. Production</h5>
+          <p>Here we are at D.N. Production&trade; to support you in improving your IT knowledge.</p>
+          <div class="social-row">
+              <a href="https://web.facebook.com/dulana.obapitiya" class="social-btn" target="_blank" aria-label="Facebook">
+                  <i class="bi bi-facebook"></i>
+              </a>
+              <a href="#" class="social-btn" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+              <a href="https://www.linkedin.com/in/dulananavodya/" class="social-btn" target="_blank" aria-label="LinkedIn">
+                  <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="https://www.youtube.com/@dulananavodya" class="social-btn" target="_blank" aria-label="YouTube">
+                  <i class="bi bi-youtube"></i>
+              </a>
+          </div>
+      </div>
+
+      <div>
+          <h5>Quick Links</h5>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+              <a href="#home">Home</a>
+              <a href="#education">Education</a>
+              <a href="#experience">Experience</a>
+              <a href="project.html">Projects</a>
+              <a href="#footer">About</a>
+          </div>
+          <br>
+          <p style="color:#555;font-size:0.78rem;">Copyright &copy; 2026 D.N. Production<br>All Rights Reserved.</p>
+      </div>
+
+      <div>
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+              <i class="bi bi-house-fill"></i>
+              <span>2A, Wewalwala Road, Bataganwila, Galle, Sri Lanka</span>
+          </div>
+          <div class="footer-contact-item">
+              <i class="bi bi-at"></i>
+              <span>dulanaobapitiya@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <span>+94 762 046 551</span>
+          </div>
+          <div class="footer-contact-item">
+              <i class="bi bi-printer-fill"></i>
+              <span>+94 119 356 356</span>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>Copyright &copy; 2026 D.N. Production &trade; — All Rights Reserved</p>
+  </div>
+</footer>
+<script>
+  // Filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        const match = f === 'all' || card.dataset.cat === f;
+        card.classList.toggle('hidden', !match);
+      });
+    });
+  });
+
+  const toggler = document.getElementById('navToggler');
+  const navCollapse = document.getElementById('navbarNav');
+  toggler.addEventListener('click', () => {
+      navCollapse.classList.toggle('open');
+  });
+  navCollapse.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', () => navCollapse.classList.remove('open'));
+  });
+</script>
+</body>
+</html>
